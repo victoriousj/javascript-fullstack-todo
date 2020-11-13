@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "storage": "./todo.dev.sqlite",
+    "host": "127.0.0.1",
+    "dialect": "sqlite"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "storage": "./todo.sqlite",
+    "host": "127.0.0.1",
+    "dialect": "sqlite"
+  }
+}
