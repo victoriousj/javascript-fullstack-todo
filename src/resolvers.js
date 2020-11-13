@@ -14,8 +14,12 @@ const resolvers = {
     async task(root, { id }, { models }) {
       return models.Task.findByPk(id);
     },
+    async allTasks(root, args, { models }) {
+      return models.Task.findAll();
+    },
     async allTasksForUser(root, { id }, { models }) {
-      return models.Task.findAll({ where: { userId: id } });
+      var asdf = await models.Task.findAll({ where: { userId: id } });
+      return asdf;
     },
     async login(root, { userName, password }, { models }) {
       const user = await models.User.findOne({ where: { userName } });
