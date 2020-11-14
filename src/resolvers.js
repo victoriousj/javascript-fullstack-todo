@@ -18,8 +18,7 @@ const resolvers = {
       return models.Task.findAll();
     },
     async allTasksForUser(root, { id }, { models }) {
-      var asdf = await models.Task.findAll({ where: { userId: id } });
-      return asdf;
+      return models.Task.findAll({ where: { userId: id } });
     },
     async login(root, { userName, password }, { models }) {
       const user = await models.User.findOne({ where: { userName } });
@@ -48,6 +47,11 @@ const resolvers = {
     async createTask(root, { userId, text }, { models }) {
       return models.Task.create({ userId, text, isDone: 0 });
     },
+
+    async toggleTaskCompletion(root, { id, isDone }, { models }) {
+      const task = await models.Task.findByPk(id);
+      return await task.update({ isDone })
+    }
   },
 
   User: {

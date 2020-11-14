@@ -44,6 +44,8 @@ const typeDefs = gql`
       userId: Int!
       text: String!
     ) : Task!
+
+    toggleTaskCompletion (id: Int!, isDone: Int!): Task!
   }
 `;
 

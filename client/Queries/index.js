@@ -30,3 +30,13 @@ export const GET_TASKS = gql`
     }
   }
 `;
+
+export const TOGGLE_TASK_COMPLETION = gql`
+  mutation ($id: Int!, $isDone: Int!) {
+    toggleTaskCompletion(id: $id, isDone: $isDone) {
+      id,
+      text,
+      isDone
+    }
+  }
+`;
