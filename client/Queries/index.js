@@ -21,6 +21,20 @@ export const ALL_TASKS_FOR_USER = gql`
   }
 `;
 
+export const LOGIN = gql`
+  query ($userName: String!, $password: String!) {
+    login(userName: $userName, password: $password) {
+      success,
+      user {
+        id,
+        firstName,
+        lastName,
+        userName
+      }
+    }
+  }
+`;
+
 export const GET_TASKS = gql`
   {
     allTasks {
