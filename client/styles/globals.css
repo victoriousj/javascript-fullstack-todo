@@ -4,11 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: #111;
-}
-
-p,h1,h2,h3,h4,h5,span {
-  color: rgb(172, 165, 154);;
+    background-color: bone;
 }
 
 a {
@@ -37,11 +33,6 @@ a {
   cursor: pointer;
 }
 
-.form-control {
-  background-color: rgb(34,37,38);
-  color: rgb(172,165,154);
-}
-
 .container {
   border: 1px solid #d8d8d8;
   padding: 2rem;
@@ -51,4 +42,8 @@ a {
 
 label {
   color: rgb(178, 172, 162);
+}
+
+.pointer {
+  cursor: pointer;
 }

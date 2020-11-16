@@ -1,6 +1,5 @@
 const bcrypt = require('bcryptjs');
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
 
 
 const resolvers = {
@@ -20,8 +19,19 @@ const resolvers = {
     async allTasksForUser(root, { id }, { models }) {
       return models.Task.findAll({ where: { userId: id } });
     },
-    async login(root, { userName, password }, { models }) {
-      const user = await models.User.findOne({ where: { userName } });
+  },
+
+  Mutation: {
+    async createUser(root, { name, email, password }, { models }) {
+      return models.User.create({
+        name,
+        email,
+        password: await bcrypt.hash(password, 10)
+      });
+    },
+
+    async loginUser(root, { email, password }, { models }) {
+      const user = await models.User.findOne({ where: { email } });
       if (user) {
         const passwordMatch = await bcrypt.compare(password, user.password);
         if (passwordMatch) {
@@ -29,19 +39,6 @@ const resolvers = {
         }
       };
       return { success: false };
-    }
-  },
-
-  Mutation: {
-    async createUser(root, { firstName, lastName, userName, email, password }, { models }) {
-      return models.User.create(
-        {
-          firstName,
-          lastName,
-          userName,
-          email,
-          password: await bcrypt.hash(password, 10)
-        });
     },
 
     async createTask(root, { userId, text }, { models }) {

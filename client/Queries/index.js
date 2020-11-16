@@ -21,16 +21,24 @@ export const ALL_TASKS_FOR_USER = gql`
   }
 `;
 
-export const LOGIN = gql`
-  query ($userName: String!, $password: String!) {
-    login(userName: $userName, password: $password) {
+export const LOGIN_USER = gql`
+  mutation ($email: String!, $password: String!) {
+    loginUser(email: $email, password: $password) {
       success,
       user {
         id,
-        firstName,
-        lastName,
-        userName
+        email
+        name
       }
+    }
+  }
+`;
+
+export const CREATE_USER = gql`
+  mutation ($name: String!, $email: String!, $password: String!) {
+    createUser(name: $name, email: $email, password: $password) {
+      id,
+      name
     }
   }
 `;
