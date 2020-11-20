@@ -3,30 +3,30 @@ import { gql } from 'apollo-boost';
 export const GET_USERS = gql`
   query {
     allUsers {
-      id,
-      firstName,
-      lastName,
+      id
+      firstName
+      lastName
       email
     }
   }
 `;
 
 export const ALL_TASKS_FOR_USER = gql`
-  query ($id: Int!) {
+  query($id: Int!) {
     allTasksForUser(id: $id) {
-      id,
-      text,
+      id
+      text
       isDone
     }
   }
 `;
 
 export const LOGIN_USER = gql`
-  mutation ($email: String!, $password: String!) {
+  mutation($email: String!, $password: String!) {
     loginUser(email: $email, password: $password) {
-      success,
+      success
       user {
-        id,
+        id
         email
         name
       }
@@ -35,9 +35,9 @@ export const LOGIN_USER = gql`
 `;
 
 export const CREATE_USER = gql`
-  mutation ($name: String!, $email: String!, $password: String!) {
+  mutation($name: String!, $email: String!, $password: String!) {
     createUser(name: $name, email: $email, password: $password) {
-      id,
+      id
       name
     }
   }
@@ -46,18 +46,18 @@ export const CREATE_USER = gql`
 export const GET_TASKS = gql`
   {
     allTasks {
-      id,
-      text,
+      id
+      text
       isDone
     }
   }
 `;
 
 export const TOGGLE_TASK_COMPLETION = gql`
-  mutation ($id: Int!, $isDone: Int!) {
+  mutation($id: Int!, $isDone: Int!) {
     toggleTaskCompletion(id: $id, isDone: $isDone) {
-      id,
-      text,
+      id
+      text
       isDone
     }
   }

@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type User {
@@ -26,28 +26,18 @@ const typeDefs = gql`
     task(id: Int!): Task
     allTasks: [Task!]!
     allTasksForUser(id: Int!): [Task!]!
-    login(email: String! password: String!): LoginResult
+    login(email: String!, password: String!): LoginResult
   }
 
   type Mutation {
-    createUser (
-      name: String!
-      email: String!
-      password: String!
-    ) : User!
+    createUser(name: String!, email: String!, password: String!): User!
 
-    loginUser (
-      email: String!
-      password: String!
-    ) : LoginResult
+    loginUser(email: String!, password: String!): LoginResult
 
-    createTask (
-      userId: Int!
-      text: String!
-    ) : Task!
+    createTask(userId: Int!, text: String!): Task!
 
-    toggleTaskCompletion (id: Int!, isDone: Int!): Task!
+    toggleTaskCompletion(id: Int!, isDone: Int!): Task!
   }
 `;
 
-module.exports = typeDefs
+module.exports = typeDefs;

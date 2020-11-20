@@ -1,6 +1,5 @@
-const bcrypt = require('bcryptjs');
-const Sequelize = require('sequelize');
-
+const bcrypt = require("bcryptjs");
+const Sequelize = require("sequelize");
 
 const resolvers = {
   Query: {
@@ -26,7 +25,7 @@ const resolvers = {
       return models.User.create({
         name,
         email,
-        password: await bcrypt.hash(password, 10)
+        password: await bcrypt.hash(password, 10),
       });
     },
 
@@ -37,7 +36,7 @@ const resolvers = {
         if (passwordMatch) {
           return { success: passwordMatch, user };
         }
-      };
+      }
       return { success: false };
     },
 
@@ -47,8 +46,8 @@ const resolvers = {
 
     async toggleTaskCompletion(root, { id, isDone }, { models }) {
       const task = await models.Task.findByPk(id);
-      return await task.update({ isDone })
-    }
+      return await task.update({ isDone });
+    },
   },
 
   User: {
@@ -60,8 +59,8 @@ const resolvers = {
   Task: {
     async user(task) {
       return task.getUser();
-    }
-  }
-}
+    },
+  },
+};
 
-module.exports = resolvers
+module.exports = resolvers;
